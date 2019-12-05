@@ -5,7 +5,7 @@
 -- Dumped from database version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 -- Dumped by pg_dump version 12.0
 
--- Started on 2019-12-02 08:44:44
+-- Started on 2019-12-05 08:57:17
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,7 +19,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 32 (class 2615 OID 16763)
+-- TOC entry 18 (class 2615 OID 16763)
 -- Name: zdsabroso; Type: SCHEMA; Schema: -; Owner: datama2mi181
 --
 
@@ -31,7 +31,7 @@ ALTER SCHEMA zdsabroso OWNER TO datama2mi181;
 SET default_tablespace = '';
 
 --
--- TOC entry 299 (class 1259 OID 17770)
+-- TOC entry 302 (class 1259 OID 17770)
 -- Name: chef; Type: TABLE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -46,7 +46,7 @@ CREATE TABLE zdsabroso.chef (
 ALTER TABLE zdsabroso.chef OWNER TO datama2mi181;
 
 --
--- TOC entry 298 (class 1259 OID 17768)
+-- TOC entry 301 (class 1259 OID 17768)
 -- Name: chef_chef_id_seq; Type: SEQUENCE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -62,8 +62,8 @@ CREATE SEQUENCE zdsabroso.chef_chef_id_seq
 ALTER TABLE zdsabroso.chef_chef_id_seq OWNER TO datama2mi181;
 
 --
--- TOC entry 3344 (class 0 OID 0)
--- Dependencies: 298
+-- TOC entry 3508 (class 0 OID 0)
+-- Dependencies: 301
 -- Name: chef_chef_id_seq; Type: SEQUENCE OWNED BY; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -71,7 +71,7 @@ ALTER SEQUENCE zdsabroso.chef_chef_id_seq OWNED BY zdsabroso.chef.chef_id;
 
 
 --
--- TOC entry 285 (class 1259 OID 17549)
+-- TOC entry 288 (class 1259 OID 17549)
 -- Name: employee; Type: TABLE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -81,14 +81,15 @@ CREATE TABLE zdsabroso.employee (
     emp_lname character varying(45) NOT NULL,
     emp_dob date,
     emp_address character varying(45) DEFAULT NULL::character varying,
-    emp_date_hired date
+    emp_date_hired date,
+    res_id integer
 );
 
 
 ALTER TABLE zdsabroso.employee OWNER TO datama2mi181;
 
 --
--- TOC entry 284 (class 1259 OID 17547)
+-- TOC entry 287 (class 1259 OID 17547)
 -- Name: employee_emp_id_seq; Type: SEQUENCE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -104,8 +105,8 @@ CREATE SEQUENCE zdsabroso.employee_emp_id_seq
 ALTER TABLE zdsabroso.employee_emp_id_seq OWNER TO datama2mi181;
 
 --
--- TOC entry 3345 (class 0 OID 0)
--- Dependencies: 284
+-- TOC entry 3509 (class 0 OID 0)
+-- Dependencies: 287
 -- Name: employee_emp_id_seq; Type: SEQUENCE OWNED BY; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -113,7 +114,7 @@ ALTER SEQUENCE zdsabroso.employee_emp_id_seq OWNED BY zdsabroso.employee.emp_id;
 
 
 --
--- TOC entry 287 (class 1259 OID 17558)
+-- TOC entry 290 (class 1259 OID 17558)
 -- Name: online_customer; Type: TABLE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -121,14 +122,15 @@ CREATE TABLE zdsabroso.online_customer (
     onl_id integer NOT NULL,
     onl_fname character varying(45) DEFAULT NULL::character varying,
     onl_lname character varying(45) DEFAULT NULL::character varying,
-    onl_dob date
+    onl_dob date,
+    ord_id integer
 );
 
 
 ALTER TABLE zdsabroso.online_customer OWNER TO datama2mi181;
 
 --
--- TOC entry 286 (class 1259 OID 17556)
+-- TOC entry 289 (class 1259 OID 17556)
 -- Name: online_customer_onl_id_seq; Type: SEQUENCE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -144,8 +146,8 @@ CREATE SEQUENCE zdsabroso.online_customer_onl_id_seq
 ALTER TABLE zdsabroso.online_customer_onl_id_seq OWNER TO datama2mi181;
 
 --
--- TOC entry 3346 (class 0 OID 0)
--- Dependencies: 286
+-- TOC entry 3510 (class 0 OID 0)
+-- Dependencies: 289
 -- Name: online_customer_onl_id_seq; Type: SEQUENCE OWNED BY; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -153,7 +155,7 @@ ALTER SEQUENCE zdsabroso.online_customer_onl_id_seq OWNED BY zdsabroso.online_cu
 
 
 --
--- TOC entry 293 (class 1259 OID 17743)
+-- TOC entry 296 (class 1259 OID 17743)
 -- Name: orders; Type: TABLE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -168,7 +170,7 @@ CREATE TABLE zdsabroso.orders (
 ALTER TABLE zdsabroso.orders OWNER TO datama2mi181;
 
 --
--- TOC entry 341 (class 1259 OID 22912)
+-- TOC entry 343 (class 1259 OID 22912)
 -- Name: onlinecustomer_order; Type: VIEW; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -186,7 +188,7 @@ CREATE VIEW zdsabroso.onlinecustomer_order AS
 ALTER TABLE zdsabroso.onlinecustomer_order OWNER TO datama2mi181;
 
 --
--- TOC entry 289 (class 1259 OID 17693)
+-- TOC entry 292 (class 1259 OID 17693)
 -- Name: onsite_customer; Type: TABLE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -201,7 +203,7 @@ CREATE TABLE zdsabroso.onsite_customer (
 ALTER TABLE zdsabroso.onsite_customer OWNER TO datama2mi181;
 
 --
--- TOC entry 288 (class 1259 OID 17691)
+-- TOC entry 291 (class 1259 OID 17691)
 -- Name: onsite_customer_ons_id_seq; Type: SEQUENCE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -217,8 +219,8 @@ CREATE SEQUENCE zdsabroso.onsite_customer_ons_id_seq
 ALTER TABLE zdsabroso.onsite_customer_ons_id_seq OWNER TO datama2mi181;
 
 --
--- TOC entry 3347 (class 0 OID 0)
--- Dependencies: 288
+-- TOC entry 3511 (class 0 OID 0)
+-- Dependencies: 291
 -- Name: onsite_customer_ons_id_seq; Type: SEQUENCE OWNED BY; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -226,7 +228,7 @@ ALTER SEQUENCE zdsabroso.onsite_customer_ons_id_seq OWNED BY zdsabroso.onsite_cu
 
 
 --
--- TOC entry 292 (class 1259 OID 17741)
+-- TOC entry 295 (class 1259 OID 17741)
 -- Name: orders_ord_id_seq; Type: SEQUENCE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -242,8 +244,8 @@ CREATE SEQUENCE zdsabroso.orders_ord_id_seq
 ALTER TABLE zdsabroso.orders_ord_id_seq OWNER TO datama2mi181;
 
 --
--- TOC entry 3348 (class 0 OID 0)
--- Dependencies: 292
+-- TOC entry 3512 (class 0 OID 0)
+-- Dependencies: 295
 -- Name: orders_ord_id_seq; Type: SEQUENCE OWNED BY; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -251,7 +253,7 @@ ALTER SEQUENCE zdsabroso.orders_ord_id_seq OWNED BY zdsabroso.orders.ord_id;
 
 
 --
--- TOC entry 295 (class 1259 OID 17752)
+-- TOC entry 298 (class 1259 OID 17752)
 -- Name: product; Type: TABLE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -267,7 +269,7 @@ CREATE TABLE zdsabroso.product (
 ALTER TABLE zdsabroso.product OWNER TO datama2mi181;
 
 --
--- TOC entry 294 (class 1259 OID 17750)
+-- TOC entry 297 (class 1259 OID 17750)
 -- Name: product_prod_id_seq; Type: SEQUENCE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -283,8 +285,8 @@ CREATE SEQUENCE zdsabroso.product_prod_id_seq
 ALTER TABLE zdsabroso.product_prod_id_seq OWNER TO datama2mi181;
 
 --
--- TOC entry 3349 (class 0 OID 0)
--- Dependencies: 294
+-- TOC entry 3513 (class 0 OID 0)
+-- Dependencies: 297
 -- Name: product_prod_id_seq; Type: SEQUENCE OWNED BY; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -292,7 +294,7 @@ ALTER SEQUENCE zdsabroso.product_prod_id_seq OWNED BY zdsabroso.product.prod_id;
 
 
 --
--- TOC entry 313 (class 1259 OID 17854)
+-- TOC entry 316 (class 1259 OID 17854)
 -- Name: restaurant; Type: TABLE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -306,7 +308,7 @@ CREATE TABLE zdsabroso.restaurant (
 ALTER TABLE zdsabroso.restaurant OWNER TO datama2mi181;
 
 --
--- TOC entry 312 (class 1259 OID 17852)
+-- TOC entry 315 (class 1259 OID 17852)
 -- Name: restaurant_res_id_seq; Type: SEQUENCE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -322,8 +324,8 @@ CREATE SEQUENCE zdsabroso.restaurant_res_id_seq
 ALTER TABLE zdsabroso.restaurant_res_id_seq OWNER TO datama2mi181;
 
 --
--- TOC entry 3350 (class 0 OID 0)
--- Dependencies: 312
+-- TOC entry 3514 (class 0 OID 0)
+-- Dependencies: 315
 -- Name: restaurant_res_id_seq; Type: SEQUENCE OWNED BY; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -331,7 +333,7 @@ ALTER SEQUENCE zdsabroso.restaurant_res_id_seq OWNED BY zdsabroso.restaurant.res
 
 
 --
--- TOC entry 315 (class 1259 OID 18054)
+-- TOC entry 318 (class 1259 OID 18054)
 -- Name: restaurant_supplier; Type: TABLE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -345,7 +347,7 @@ CREATE TABLE zdsabroso.restaurant_supplier (
 ALTER TABLE zdsabroso.restaurant_supplier OWNER TO datama2mi181;
 
 --
--- TOC entry 283 (class 1259 OID 17540)
+-- TOC entry 286 (class 1259 OID 17540)
 -- Name: supplier; Type: TABLE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -360,7 +362,7 @@ CREATE TABLE zdsabroso.supplier (
 ALTER TABLE zdsabroso.supplier OWNER TO datama2mi181;
 
 --
--- TOC entry 282 (class 1259 OID 17538)
+-- TOC entry 285 (class 1259 OID 17538)
 -- Name: supplier_supp_id_seq; Type: SEQUENCE; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -376,8 +378,8 @@ CREATE SEQUENCE zdsabroso.supplier_supp_id_seq
 ALTER TABLE zdsabroso.supplier_supp_id_seq OWNER TO datama2mi181;
 
 --
--- TOC entry 3351 (class 0 OID 0)
--- Dependencies: 282
+-- TOC entry 3515 (class 0 OID 0)
+-- Dependencies: 285
 -- Name: supplier_supp_id_seq; Type: SEQUENCE OWNED BY; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -385,7 +387,7 @@ ALTER SEQUENCE zdsabroso.supplier_supp_id_seq OWNED BY zdsabroso.supplier.supp_i
 
 
 --
--- TOC entry 3167 (class 2604 OID 17773)
+-- TOC entry 3320 (class 2604 OID 17773)
 -- Name: chef chef_id; Type: DEFAULT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -393,7 +395,7 @@ ALTER TABLE ONLY zdsabroso.chef ALTER COLUMN chef_id SET DEFAULT nextval('zdsabr
 
 
 --
--- TOC entry 3155 (class 2604 OID 17552)
+-- TOC entry 3308 (class 2604 OID 17552)
 -- Name: employee emp_id; Type: DEFAULT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -401,7 +403,7 @@ ALTER TABLE ONLY zdsabroso.employee ALTER COLUMN emp_id SET DEFAULT nextval('zds
 
 
 --
--- TOC entry 3157 (class 2604 OID 17561)
+-- TOC entry 3310 (class 2604 OID 17561)
 -- Name: online_customer onl_id; Type: DEFAULT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -409,7 +411,7 @@ ALTER TABLE ONLY zdsabroso.online_customer ALTER COLUMN onl_id SET DEFAULT nextv
 
 
 --
--- TOC entry 3160 (class 2604 OID 17696)
+-- TOC entry 3313 (class 2604 OID 17696)
 -- Name: onsite_customer ons_id; Type: DEFAULT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -417,7 +419,7 @@ ALTER TABLE ONLY zdsabroso.onsite_customer ALTER COLUMN ons_id SET DEFAULT nextv
 
 
 --
--- TOC entry 3163 (class 2604 OID 17746)
+-- TOC entry 3316 (class 2604 OID 17746)
 -- Name: orders ord_id; Type: DEFAULT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -425,7 +427,7 @@ ALTER TABLE ONLY zdsabroso.orders ALTER COLUMN ord_id SET DEFAULT nextval('zdsab
 
 
 --
--- TOC entry 3165 (class 2604 OID 17755)
+-- TOC entry 3318 (class 2604 OID 17755)
 -- Name: product prod_id; Type: DEFAULT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -433,7 +435,7 @@ ALTER TABLE ONLY zdsabroso.product ALTER COLUMN prod_id SET DEFAULT nextval('zds
 
 
 --
--- TOC entry 3168 (class 2604 OID 17857)
+-- TOC entry 3321 (class 2604 OID 17857)
 -- Name: restaurant res_id; Type: DEFAULT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -441,7 +443,7 @@ ALTER TABLE ONLY zdsabroso.restaurant ALTER COLUMN res_id SET DEFAULT nextval('z
 
 
 --
--- TOC entry 3153 (class 2604 OID 17543)
+-- TOC entry 3306 (class 2604 OID 17543)
 -- Name: supplier supp_id; Type: DEFAULT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -449,8 +451,8 @@ ALTER TABLE ONLY zdsabroso.supplier ALTER COLUMN supp_id SET DEFAULT nextval('zd
 
 
 --
--- TOC entry 3335 (class 0 OID 17770)
--- Dependencies: 299
+-- TOC entry 3499 (class 0 OID 17770)
+-- Dependencies: 302
 -- Data for Name: chef; Type: TABLE DATA; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -459,48 +461,48 @@ INSERT INTO zdsabroso.chef VALUES (2, 'sous chef', 'Jeremy', 'Carmack');
 
 
 --
--- TOC entry 3325 (class 0 OID 17549)
--- Dependencies: 285
+-- TOC entry 3489 (class 0 OID 17549)
+-- Dependencies: 288
 -- Data for Name: employee; Type: TABLE DATA; Schema: zdsabroso; Owner: datama2mi181
 --
 
 
 
 --
--- TOC entry 3327 (class 0 OID 17558)
--- Dependencies: 287
+-- TOC entry 3491 (class 0 OID 17558)
+-- Dependencies: 290
 -- Data for Name: online_customer; Type: TABLE DATA; Schema: zdsabroso; Owner: datama2mi181
 --
 
 
 
 --
--- TOC entry 3329 (class 0 OID 17693)
--- Dependencies: 289
+-- TOC entry 3493 (class 0 OID 17693)
+-- Dependencies: 292
 -- Data for Name: onsite_customer; Type: TABLE DATA; Schema: zdsabroso; Owner: datama2mi181
 --
 
 
 
 --
--- TOC entry 3331 (class 0 OID 17743)
--- Dependencies: 293
+-- TOC entry 3495 (class 0 OID 17743)
+-- Dependencies: 296
 -- Data for Name: orders; Type: TABLE DATA; Schema: zdsabroso; Owner: datama2mi181
 --
 
 
 
 --
--- TOC entry 3333 (class 0 OID 17752)
--- Dependencies: 295
+-- TOC entry 3497 (class 0 OID 17752)
+-- Dependencies: 298
 -- Data for Name: product; Type: TABLE DATA; Schema: zdsabroso; Owner: datama2mi181
 --
 
 
 
 --
--- TOC entry 3337 (class 0 OID 17854)
--- Dependencies: 313
+-- TOC entry 3501 (class 0 OID 17854)
+-- Dependencies: 316
 -- Data for Name: restaurant; Type: TABLE DATA; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -509,24 +511,24 @@ INSERT INTO zdsabroso.restaurant VALUES (2, 'Jefferson City', 32);
 
 
 --
--- TOC entry 3338 (class 0 OID 18054)
--- Dependencies: 315
+-- TOC entry 3502 (class 0 OID 18054)
+-- Dependencies: 318
 -- Data for Name: restaurant_supplier; Type: TABLE DATA; Schema: zdsabroso; Owner: datama2mi181
 --
 
 
 
 --
--- TOC entry 3323 (class 0 OID 17540)
--- Dependencies: 283
+-- TOC entry 3487 (class 0 OID 17540)
+-- Dependencies: 286
 -- Data for Name: supplier; Type: TABLE DATA; Schema: zdsabroso; Owner: datama2mi181
 --
 
 
 
 --
--- TOC entry 3352 (class 0 OID 0)
--- Dependencies: 298
+-- TOC entry 3516 (class 0 OID 0)
+-- Dependencies: 301
 -- Name: chef_chef_id_seq; Type: SEQUENCE SET; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -534,8 +536,8 @@ SELECT pg_catalog.setval('zdsabroso.chef_chef_id_seq', 1, false);
 
 
 --
--- TOC entry 3353 (class 0 OID 0)
--- Dependencies: 284
+-- TOC entry 3517 (class 0 OID 0)
+-- Dependencies: 287
 -- Name: employee_emp_id_seq; Type: SEQUENCE SET; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -543,8 +545,8 @@ SELECT pg_catalog.setval('zdsabroso.employee_emp_id_seq', 1, false);
 
 
 --
--- TOC entry 3354 (class 0 OID 0)
--- Dependencies: 286
+-- TOC entry 3518 (class 0 OID 0)
+-- Dependencies: 289
 -- Name: online_customer_onl_id_seq; Type: SEQUENCE SET; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -552,8 +554,8 @@ SELECT pg_catalog.setval('zdsabroso.online_customer_onl_id_seq', 1, false);
 
 
 --
--- TOC entry 3355 (class 0 OID 0)
--- Dependencies: 288
+-- TOC entry 3519 (class 0 OID 0)
+-- Dependencies: 291
 -- Name: onsite_customer_ons_id_seq; Type: SEQUENCE SET; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -561,8 +563,8 @@ SELECT pg_catalog.setval('zdsabroso.onsite_customer_ons_id_seq', 1, false);
 
 
 --
--- TOC entry 3356 (class 0 OID 0)
--- Dependencies: 292
+-- TOC entry 3520 (class 0 OID 0)
+-- Dependencies: 295
 -- Name: orders_ord_id_seq; Type: SEQUENCE SET; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -570,8 +572,8 @@ SELECT pg_catalog.setval('zdsabroso.orders_ord_id_seq', 1, false);
 
 
 --
--- TOC entry 3357 (class 0 OID 0)
--- Dependencies: 294
+-- TOC entry 3521 (class 0 OID 0)
+-- Dependencies: 297
 -- Name: product_prod_id_seq; Type: SEQUENCE SET; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -579,8 +581,8 @@ SELECT pg_catalog.setval('zdsabroso.product_prod_id_seq', 1, false);
 
 
 --
--- TOC entry 3358 (class 0 OID 0)
--- Dependencies: 312
+-- TOC entry 3522 (class 0 OID 0)
+-- Dependencies: 315
 -- Name: restaurant_res_id_seq; Type: SEQUENCE SET; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -588,8 +590,8 @@ SELECT pg_catalog.setval('zdsabroso.restaurant_res_id_seq', 1, false);
 
 
 --
--- TOC entry 3359 (class 0 OID 0)
--- Dependencies: 282
+-- TOC entry 3523 (class 0 OID 0)
+-- Dependencies: 285
 -- Name: supplier_supp_id_seq; Type: SEQUENCE SET; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -597,7 +599,7 @@ SELECT pg_catalog.setval('zdsabroso.supplier_supp_id_seq', 1, false);
 
 
 --
--- TOC entry 3183 (class 2606 OID 17775)
+-- TOC entry 3336 (class 2606 OID 17775)
 -- Name: chef chef_pkey; Type: CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -606,7 +608,7 @@ ALTER TABLE ONLY zdsabroso.chef
 
 
 --
--- TOC entry 3173 (class 2606 OID 17555)
+-- TOC entry 3326 (class 2606 OID 17555)
 -- Name: employee employee_pkey; Type: CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -615,7 +617,7 @@ ALTER TABLE ONLY zdsabroso.employee
 
 
 --
--- TOC entry 3175 (class 2606 OID 17565)
+-- TOC entry 3328 (class 2606 OID 17565)
 -- Name: online_customer online_customer_pkey; Type: CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -624,7 +626,7 @@ ALTER TABLE ONLY zdsabroso.online_customer
 
 
 --
--- TOC entry 3177 (class 2606 OID 17700)
+-- TOC entry 3330 (class 2606 OID 17700)
 -- Name: onsite_customer onsite_customer_pkey; Type: CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -633,7 +635,7 @@ ALTER TABLE ONLY zdsabroso.onsite_customer
 
 
 --
--- TOC entry 3179 (class 2606 OID 17749)
+-- TOC entry 3332 (class 2606 OID 17749)
 -- Name: orders orders_pkey; Type: CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -642,7 +644,7 @@ ALTER TABLE ONLY zdsabroso.orders
 
 
 --
--- TOC entry 3181 (class 2606 OID 17758)
+-- TOC entry 3334 (class 2606 OID 17758)
 -- Name: product product_pkey; Type: CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -651,7 +653,7 @@ ALTER TABLE ONLY zdsabroso.product
 
 
 --
--- TOC entry 3185 (class 2606 OID 17860)
+-- TOC entry 3338 (class 2606 OID 17860)
 -- Name: restaurant restaurant_pkey; Type: CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -660,7 +662,7 @@ ALTER TABLE ONLY zdsabroso.restaurant
 
 
 --
--- TOC entry 3187 (class 2606 OID 18058)
+-- TOC entry 3340 (class 2606 OID 18058)
 -- Name: restaurant_supplier restaurant_supplier_id; Type: CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -669,7 +671,7 @@ ALTER TABLE ONLY zdsabroso.restaurant_supplier
 
 
 --
--- TOC entry 3171 (class 2606 OID 17546)
+-- TOC entry 3324 (class 2606 OID 17546)
 -- Name: supplier supplier_pkey; Type: CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -678,7 +680,25 @@ ALTER TABLE ONLY zdsabroso.supplier
 
 
 --
--- TOC entry 3188 (class 2606 OID 18059)
+-- TOC entry 3342 (class 2606 OID 25370)
+-- Name: online_customer ord_id_fkey; Type: FK CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
+--
+
+ALTER TABLE ONLY zdsabroso.online_customer
+    ADD CONSTRAINT ord_id_fkey FOREIGN KEY (ord_id) REFERENCES zdsabroso.orders(ord_id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 3341 (class 2606 OID 25226)
+-- Name: employee res_id_fkey; Type: FK CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
+--
+
+ALTER TABLE ONLY zdsabroso.employee
+    ADD CONSTRAINT res_id_fkey FOREIGN KEY (res_id) REFERENCES zdsabroso.restaurant(res_id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 3343 (class 2606 OID 18059)
 -- Name: restaurant_supplier restaurant_supplier_res_id_fkey; Type: FK CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -687,7 +707,7 @@ ALTER TABLE ONLY zdsabroso.restaurant_supplier
 
 
 --
--- TOC entry 3189 (class 2606 OID 18064)
+-- TOC entry 3344 (class 2606 OID 18064)
 -- Name: restaurant_supplier restaurant_supplier_supp_id_fkey; Type: FK CONSTRAINT; Schema: zdsabroso; Owner: datama2mi181
 --
 
@@ -695,7 +715,7 @@ ALTER TABLE ONLY zdsabroso.restaurant_supplier
     ADD CONSTRAINT restaurant_supplier_supp_id_fkey FOREIGN KEY (supp_id) REFERENCES zdsabroso.supplier(supp_id) ON UPDATE CASCADE;
 
 
--- Completed on 2019-12-02 08:44:44
+-- Completed on 2019-12-05 08:57:18
 
 --
 -- PostgreSQL database dump complete
